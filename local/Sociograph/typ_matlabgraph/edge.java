@@ -46,7 +46,7 @@ public class edge {
                  while(sFile.hasNext()){
 
                          String edge = sFile.nextLine();
-                         System.out.println(edge);
+                         //System.out.println(edge);
                          
                          Scanner edgeScan = new Scanner(edge);
                          edgeScan.useDelimiter(",");
@@ -56,7 +56,7 @@ public class edge {
 
                          
                                   k = edgeScan.nextLong();
-                                 System.out.print(k+" ");
+                                 //System.out.print(k+" ");
                                  
                                  String ident_k = String.valueOf(k);
                                   String rot_Id_k = rot13.encrypt(ident_k);
@@ -64,13 +64,13 @@ public class edge {
                                   
                                  
                                   p = edgeScan.nextLong();
-                                 System.out.println(p);
+                                // System.out.println(p);
                                  
                                  String ident_p = String.valueOf(p);
                                   String rot_Id_p = rot13.encrypt(ident_p);
                                   Long rot_p = Long.parseLong(rot_Id_p);
                                   
-                                 System.out.println(rot_k+" : "+rot_p);
+                                 //System.out.println(rot_k+" : "+rot_p);
                                   entry = new edge( k, p);
                                   
                                   tie.add(entry);                      
