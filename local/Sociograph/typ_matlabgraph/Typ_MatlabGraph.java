@@ -47,7 +47,9 @@ public class Typ_MatlabGraph {
     .setMatlabLocation(null).build(); 
 
     MatlabProxyFactory factory = new MatlabProxyFactory(options);
-    MatlabProxy proxy = factory.getProxy();    
+    MatlabProxy proxy = factory.getProxy();   
+    
+    proxy.eval("adjMatrix = zeros("+people.size()+","+people.size()+")");
         
     try{
             people = encryptOut.importer();
@@ -63,7 +65,7 @@ public class Typ_MatlabGraph {
     
     try {
     
-        tie = edge.importer();
+        tie = edge.importer(proxy);
        
     }
     
@@ -73,7 +75,7 @@ public class Typ_MatlabGraph {
     }
     
     
-    proxy.eval("adjMatrix = zeros("+people.size()+","+people.size()+")");
+    
     
    
     

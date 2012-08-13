@@ -94,7 +94,7 @@ public class encryptOut {
                 PrintWriter outFile = new PrintWriter(bw);
                     
                 outFile.println("nodedef>name VARCHAR,label VARCHAR,sex VARCHAR,locale VARCHAR");
-                outFile.println();
+                
                 
                     for(i = 0; i < usr.size(); i++){
 
@@ -121,10 +121,11 @@ public class encryptOut {
                            
                            result = ((double[]) proxy.getVariable("adjMatrix("+index_a+","+index_b+");"))[0];
                            
+                           item = (int)result;
                            
                            //item = ((Integer)result).intValue();
                            //System.out.println(result);
-                           if (result == 1){
+                           if (item == 1){
                                
                                System.out.print(" ("+usr.get(j).firstName+") ");
                            

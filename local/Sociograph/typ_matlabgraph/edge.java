@@ -4,6 +4,12 @@
  */
 package typ_matlabgraph;
 
+import matlabcontrol.MatlabConnectionException;
+import matlabcontrol.MatlabInvocationException;
+import matlabcontrol.MatlabProxy;
+import matlabcontrol.MatlabProxyFactory;
+import matlabcontrol.MatlabProxyFactoryOptions;
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -31,7 +37,7 @@ public class edge {
         this.i = i;
     }
     
-    public static LinkedList<edge> importer() throws IOException {
+    public static LinkedList<edge> importer(MatlabProxy proxy) throws IOException, MatlabConnectionException, MatlabInvocationException {
         
         Scanner sFile;
         edge entry;
@@ -56,7 +62,7 @@ public class edge {
 
                          
                                   k = edgeScan.nextLong();
-                                 //System.out.print(k+" ");
+                                 System.out.print(k+" ");
                                  
                                  String ident_k = String.valueOf(k);
                                   String rot_Id_k = rot13.encrypt(ident_k);
@@ -64,7 +70,7 @@ public class edge {
                                   
                                  
                                   p = edgeScan.nextLong();
-                                // System.out.println(p);
+                                System.out.print(p);
                                  
                                  String ident_p = String.valueOf(p);
                                   String rot_Id_p = rot13.encrypt(ident_p);
@@ -72,6 +78,15 @@ public class edge {
                                   
                                  //System.out.println(rot_k+" : "+rot_p);
                                   entry = new edge( k, p);
+                                  
+                                  int n = search.search(k);
+                                  int m = search.search(p);
+                                  System.out.print(" : "+Typ_MatlabGraph.people.get(n).idProf+" "+Typ_MatlabGraph.people.get(m).idProf);
+                                  System.out.println("");
+                                  n++;
+                                  m++;
+                                  
+                                  proxy.eval("adjMatrix("+n+","+m+") = 1");
                                   
                                   tie.add(entry);                      
                                 }
